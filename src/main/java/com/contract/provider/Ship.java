@@ -1,5 +1,7 @@
 package com.contract.provider;
 
+import java.util.List;
+
 public class Ship {
 
     private String name;
