@@ -50,7 +50,12 @@
         <!--CONTRACT TESTING DEPENDENCIES-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
+            <artifactId>spring-cloud-starter-contract-verifier</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-contract-wiremock</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -90,7 +95,7 @@
                 <version>${spring-cloud-contract.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <baseClassForTests>starship.BaseClass</baseClassForTests>
+                    <baseClassForTests>com.contract.provider.BaseClass</baseClassForTests>
                 </configuration>
             </plugin>
             <!--CONTRACT TESTING DEPENDENCIES END-->
