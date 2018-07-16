@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <spring-cloud-contract.version>1.2.1.RELEASE</spring-cloud-contract.version>
     </properties>
 
     <dependencies>
@@ -52,8 +53,16 @@
             <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
+            <version>3.0.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!--CONTRACT TESTING DEPENDENCIES END-->
     </dependencies>
 
+    <!--CONTRACT TESTING DEPENDENCIES-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -65,7 +74,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <!--CONTRACT TESTING DEPENDENCIES END-->
 
     <build>
@@ -74,6 +82,19 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <!--CONTRACT TESTING DEPENDENCIES -->
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <version>${spring-cloud-contract.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <baseClassForTests>starship.BaseClass</baseClassForTests>
+                </configuration>
+            </plugin>
+            <!--CONTRACT TESTING DEPENDENCIES END-->
+
         </plugins>
     </build>
 
